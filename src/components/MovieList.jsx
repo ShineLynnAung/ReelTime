@@ -7,7 +7,7 @@ function MovieList({genereId}) {
     const[movielist,setMovielist]=useState([]);
     useEffect(()=>{
         GetMoviesByGenereId();
-    },[])
+    },[genereId])
     const GetMoviesByGenereId=()=>{
         GlobalApi.GetMoviesByGenereId(genereId).then(resp=>{
             setMovielist(resp.data.results);

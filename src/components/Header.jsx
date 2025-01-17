@@ -10,6 +10,7 @@ import {
 import { HiPlus, HiDotsVertical } from "react-icons/hi";
 import HeaderItem from "./HeaderItem";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
 
@@ -19,6 +20,7 @@ function Header() {
     {
       name: "Home",
       icon: HiHome,
+      route: "/"
     },
     {
       name: "Search",
@@ -39,6 +41,7 @@ function Header() {
     {
       name: "Series",
       icon: HiTv,
+      route: "/series"
     },
   ];
   return (
@@ -48,21 +51,29 @@ function Header() {
   ReelTime
 </div>
 
+            
+            
         <div className="hidden md:flex gap-8">
           {menu.map((item) => (
+            <Link key={item.name} to={item.route}>
             <HeaderItem name={item.name} Icon={item.icon} />
+          </Link>
           ))}
         </div>
         <div className="flex md:hidden gap-5">
           {menu.map((item, index) => index < 3 && (
+            <Link key={item.name} to={item.route}>
             <HeaderItem name={''} Icon={item.icon} />
+          </Link>
           ))}
         <div className="md:hidden" onClick={()=>setToggle(!toggle)}>
           <HeaderItem name={''} Icon={HiDotsVertical} />
           {toggle ?
           <div className="absolute mt-3 bg-[#121212] border-[1px] p-5 px-5 py-4">
           {menu.map((item, index) => index > 2 && (
-            <HeaderItem name={item.name} Icon={item.icon}/>
+            <Link key={item.name} to={item.route}>
+            <HeaderItem name={item.name} Icon={item.icon} />
+          </Link>
           ))}
           </div>:null}
         </div>

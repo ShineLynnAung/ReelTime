@@ -1,16 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import GenereMoviesList from "./components/GenereMoviesList";
-import Header from "./components/Header";
-import Productons from "./components/Productons";
-import Slider from "./components/Slider";
-
+import Home from "./pages/home";
+import Series from "./pages/series";
 function App() {
   return (
     <div>
-        <Header />
-        <Slider />
-        <Productons />
-        <GenereMoviesList />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/series" element={<Series />} />
+        </Routes>
     </div>
   );
 }
