@@ -28,6 +28,15 @@ function Slider() {
   };
 
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      sliderRight(elementRef.current);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+  useEffect(() => {
     getTrendingVideos();
   }, []);
 
@@ -43,7 +52,7 @@ function Slider() {
       />
       <div
         className="flex overflow-x-auto w-full px-16 py-4 scrollbar-none scroll-smooth"
-        ref={elementRef}
+        ref={elementRef} 
       >
         {movielist.map((item) => (
           <img
